@@ -1,3 +1,5 @@
+![AWS Backbone Routing Tester](img/aws-backbone-routing-tester.png)
+
 # aws-backbone-routing-tester
 - [Overview](#overview)
   - [Key Features](#key-features)
