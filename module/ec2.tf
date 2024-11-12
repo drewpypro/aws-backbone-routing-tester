@@ -1,14 +1,11 @@
 resource "aws_instance" "ec2" {
-  provider = aws[each.key]
-  for_each = aws_subnet.subnet
-
-  ami           = var.ami_ids[each.key]
+  ami           = var.ami_id
   instance_type = var.instance_type
-  subnet_id     = each.value.id
-  security_groups = [aws_security_group.ec2_sg[each.key].id]
+  subnet_id     = aws_subnet.subnet
+  security_groups = [aws_security_group.ec2_sg.id]
   
   tags = {
-    Name = "${each.key}-ec2"
+    Name = "ec2-${var.region}"
   }
 
   iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
@@ -26,14 +23,12 @@ resource "aws_instance" "ec2" {
 
 }
 
-## ELASTIC IP
+
 resource "aws_eip" "ec2_eip" {
-  provider = aws[each.key]
-  for_each = aws_instance.ec2
-  instance = each.value.id
+  instance = aws_instance.ec2.id
   domain   = "vpc"
 }
 
-output "instance_public_ips" {
-  value = { for region, instance in aws_instance.ec2 : region => instance.public_ip }
+output "instance_public_ip" {
+  value = aws_eip.ec2_ip.public_ip
 }

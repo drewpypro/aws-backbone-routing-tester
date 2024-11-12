@@ -1,13 +1,11 @@
 resource "aws_security_group" "ec2_sg" {
-  provider = aws[each.key]
-  for_each = aws_vpc.vpc
-  vpc_id   = each.value.id
+  vpc_id   = aws_vpc.vpc.id
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.SOURCE_SSH_NET]
+    cidr_blocks = var.SOURCE_SSH_NET
   }
 
   egress {
@@ -25,7 +23,5 @@ resource "aws_security_group" "ec2_sg" {
 
 # No Default Allow on default sg
 resource "aws_default_security_group" "sg_default" {
-  provider = aws[each.key]
-  for_each = aws_vpc.vpc
-  vpc_id   = each.value.id
+  vpc_id   = aws_vpc.vpc.id
 }
