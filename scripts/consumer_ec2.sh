@@ -47,7 +47,7 @@ ASCII_ART='  ______   __       __   ______
 sudo systemctl daemon-reload
 
 sudo yum update -y
-sudo yum install -y python3 python3-pip traceroute netcat
+sudo yum install -y python3 python3-pip traceroute nc
 
 cat <<'EOF' > /tmp/ip_toucher.py
 ${toucher_script}
