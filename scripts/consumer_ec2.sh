@@ -53,7 +53,7 @@ cat <<'EOF' > /tmp/ip_toucher.py
 ${toucher_script}
 EOF
 
-sed -i "s|IP_LIST|${IP_LIST}|g" /tmp/aws_vpce_policy_tester.py
-chmod +x /tmp/network_traffic_test.py
+sed -i "s|IP_LIST|${IP_LIST}|g" /tmp/ip_toucher.py
+chmod +x /tmp/ip_toucher.py
 sleep 60
-python3 /tmp/network_traffic_test.py > /tmp/network_traffic_log.txt 2>&1
+python3 /tmp/ip_toucher.py > /tmp/ip_touchlog.txt 2>&1
