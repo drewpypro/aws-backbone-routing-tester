@@ -64,4 +64,4 @@ chmod +x /tmp/ip_toucher.py
 
 sleep 60
 
-python3 /tmp/ip_toucher.py > /tmp/ip_touchlog.txt 2>&1
+python3 /tmp/ip_toucher.py
