@@ -51,7 +51,8 @@ ${toucher_script}
 EOF
 
 
-sed -i "s#ip_list#${IP_LIST}#g" /tmp/ip_toucher.py
+echo "export IP_LIST=\"${IP_LIST}\"" | sudo tee -a /etc/profile
+echo "export IP_LIST=\"${IP_LIST}\""
 sed -i "s#regionvar#${REGION}#g" /tmp/ip_toucher.py
 
 chmod +x /tmp/ip_toucher.py

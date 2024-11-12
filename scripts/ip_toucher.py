@@ -2,10 +2,22 @@ import os
 import subprocess
 import csv
 from datetime import datetime
+import json
+
 
 # List of IP addresses to test
-ip_addresses = [ip_list]
+ip_addresses = os.getenv("IP_LIST")
 region = regionvar
+
+# Validate required environment variables
+if not ip_addresses:
+    raise ValueError("Environment variable IP_LIST is not set or is empty.")
+
+# Convert IP_LIST from string to Python list
+try:
+    ip_addresses = json.loads(ip_list_env)
+except json.JSONDecodeError as e:
+    raise ValueError(f"Failed to parse IP_LIST as a valid JSON array: {e}")
 
 # Output CSV file
 output_file = f"${region}-network_traffic_report.csv"
@@ -31,7 +43,7 @@ def run_command(command):
         print(f"Exception while running command: {command}\n{str(e)}\n")
         return f"Exception\n{str(e)}"
 
-def generate_report(ip_list):
+def generate_report(iplist):
     """Generate network traffic and write results to a CSV."""
     with open(output_file, mode="w", newline="") as csvfile:
         writer = csv.writer(csvfile)
@@ -40,7 +52,7 @@ def generate_report(ip_list):
         writer.writerow([])
         writer.writerow(headers)
 
-        for ip in ip_list:
+        for ip in iplist:
             print(f"Starting tests for IP: {ip}\n{'='*40}")
 
             # TCP Test using Netcat
