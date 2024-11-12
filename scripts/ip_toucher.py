@@ -16,7 +16,7 @@ if not ip_addresses:
     raise ValueError("Environment variable IP_LIST is not set or is empty.")
 
 # Output CSV file
-output_file = f"${region}-network_traffic_report.csv"
+output_file = f"{region}-network_traffic_report.csv"
 
 # Create CSV headers
 headers = ["Region", "IP Address", "Protocol", "Command", "Result"]
