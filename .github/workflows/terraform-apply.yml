@@ -16,6 +16,7 @@ env:
   BUCKET_ENDPOINT: ${{ secrets.BUCKET_ENDPOINT }}
   DO_SPACES_ACCESS_KEY_ID: ${{ secrets.DO_SPACES_ACCESS_KEY_ID }}
   DO_SPACES_SECRET_ACCESS_KEY: ${{ secrets.DO_SPACES_SECRET_ACCESS_KEY }}
+  TF_VAR_IP_LIST: ${{ secrets.IP_LIST }}
   
 jobs:
   terraform-apply:
