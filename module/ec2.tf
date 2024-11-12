@@ -28,3 +28,8 @@ resource "aws_eip" "ec2_eip" {
   instance = aws_instance.ec2.id
   domain   = "vpc"
 }
+
+output "elastic_ip" {
+  description = "Elastic IP of the EC2 instance"
+  value       = aws_eip.ec2_eip.public_ip
+}

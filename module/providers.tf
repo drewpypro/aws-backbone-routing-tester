@@ -6,7 +6,3 @@ terraform {
     }
   }
 }
-
-provider "aws" {
-  alias = "module"
-}
