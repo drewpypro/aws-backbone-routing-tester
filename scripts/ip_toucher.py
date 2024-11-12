@@ -4,13 +4,14 @@ import csv
 from datetime import datetime
 
 # List of IP addresses to test
-ip_addresses = "IP_LIST"
+ip_addresses = [ip_list]
+region = regionvar
 
 # Output CSV file
-output_file = "network_traffic_report.csv"
+output_file = f"${region}-network_traffic_report.csv"
 
 # Create CSV headers
-headers = ["IP Address", "Protocol", "Command", "Result"]
+headers = ["Region", "IP Address", "Protocol", "Command", "Result"]
 
 def run_command(command):
     """Run a shell command and return the output or error."""
@@ -19,18 +20,24 @@ def run_command(command):
         result = subprocess.run(command, shell=True, text=True, capture_output=True)
         if result.returncode == 0:
             print(f"Success: {command}\nOutput:\n{result.stdout.strip()}\n")
-            return result.stdout.strip()
+            return f"Success\nOutput:\n{result.stdout.strip()}"
         else:
             print(f"Error: {command}\nError Message:\n{result.stderr.strip()}\n")
-            return result.stderr.strip()
+            return f"Error\nMessage:\n{result.stderr.strip()}"
+    except subprocess.TimeoutExpired:
+        print(f"Timeout: {command}\n")
+        return "Timeout\nCommand took too long to complete"
     except Exception as e:
         print(f"Exception while running command: {command}\n{str(e)}\n")
-        return str(e)
+        return f"Exception\n{str(e)}"
 
 def generate_report(ip_list):
     """Generate network traffic and write results to a CSV."""
     with open(output_file, mode="w", newline="") as csvfile:
         writer = csv.writer(csvfile)
+        writer.writerow([f"Region: {region}"])
+        writer.writerow([f"Test Start Time: {datetime.now()}"])
+        writer.writerow([])
         writer.writerow(headers)
 
         for ip in ip_list:
