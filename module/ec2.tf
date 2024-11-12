@@ -8,7 +8,7 @@ resource "aws_instance" "ec2" {
     Name = "ec2-${var.region}"
   }
 
-  iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
+  # iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
 
   metadata_options {
     http_endpoint               = "enabled"
