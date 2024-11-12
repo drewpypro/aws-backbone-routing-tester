@@ -4,7 +4,7 @@ import csv
 from datetime import datetime
 
 # List of IP addresses to test
-ip_addresses = IP_LIST
+ip_addresses = "IP_LIST"
 
 # Output CSV file
 output_file = "network_traffic_report.csv"
