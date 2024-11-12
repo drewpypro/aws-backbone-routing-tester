@@ -31,7 +31,7 @@ def run_command(command):
         print(f"Exception while running command: {command}\n{str(e)}\n")
         return f"Exception\n{str(e)}"
 
-def generate_report(ip_list):
+def generate_report(iplist):
     """Generate network traffic and write results to a CSV."""
     with open(output_file, mode="w", newline="") as csvfile:
         writer = csv.writer(csvfile)
@@ -40,7 +40,7 @@ def generate_report(ip_list):
         writer.writerow([])
         writer.writerow(headers)
 
-        for ip in ip_list:
+        for ip in iplist:
             print(f"Starting tests for IP: {ip}\n{'='*40}")
 
             # TCP Test using Netcat
