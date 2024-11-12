@@ -1,5 +1,5 @@
 resource "aws_instance" "ec2" {
-  provider = aws.${each.key}
+  provider = aws[each.key]
   for_each = aws_subnet.subnet
 
   ami           = var.ami_ids[each.key]
@@ -28,7 +28,7 @@ resource "aws_instance" "ec2" {
 
 ## ELASTIC IP
 resource "aws_eip" "ec2_eip" {
-  provider = aws.${each.key}
+  provider = aws[each.key]
   for_each = aws_instance.ec2
   instance = each.value.id
   domain   = "vpc"

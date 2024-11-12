@@ -1,5 +1,5 @@
 resource "aws_security_group" "ec2_sg" {
-  provider = aws.${each.key}
+  provider = aws[each.key]
   for_each = aws_vpc.vpc
   vpc_id   = each.value.id
 
@@ -25,7 +25,7 @@ resource "aws_security_group" "ec2_sg" {
 
 # No Default Allow on default sg
 resource "aws_default_security_group" "sg_default" {
-  provider = aws.${each.key}
+  provider = aws[each.key]
   for_each = aws_vpc.vpc
   vpc_id   = each.value.id
 }
