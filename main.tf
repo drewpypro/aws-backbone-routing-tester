@@ -62,3 +62,14 @@ module "vpc_ec2_eu_west_1" {
   SOURCE_SSH_NET = var.SOURCE_SSH_NET
   PUBLIC_KEY     = var.PUBLIC_KEY
 }
+
+output "elastic_ips" {
+  description = "Elastic IPs of all EC2 instances"
+  value = {
+    "us-east-1" = module.vpc_ec2_us_east_1.elastic_ip
+    "us-east-2" = module.vpc_ec2_us_east_2.elastic_ip
+    "us-west-1" = module.vpc_ec2_us_west_1.elastic_ip
+    "us-west-2" = module.vpc_ec2_us_west_2.elastic_ip
+    "eu-west-1" = module.vpc_ec2_eu_west_1.elastic_ip
+  }
+}
