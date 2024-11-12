@@ -33,3 +33,7 @@ variable "PUBLIC_KEY" {
   type        = string
 }
 
+variable "IP_LIST" {
+  description = "IPs used for toucher script"
+  type        = list(string)
+}

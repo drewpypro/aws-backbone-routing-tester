@@ -1,9 +1,9 @@
 resource "aws_instance" "ec2" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = aws_subnet.subnet.id
+  ami             = var.ami_id
+  instance_type   = var.instance_type
+  subnet_id       = aws_subnet.subnet.id
   security_groups = [aws_security_group.ec2_sg.id]
-  
+
   tags = {
     Name = "ec2-${var.region}"
   }
@@ -18,11 +18,13 @@ resource "aws_instance" "ec2" {
   }
 
   user_data = templatefile("scripts/consumer_ec2.sh", {
-    public_key = var.PUBLIC_KEY
+    toucher_script = file("${path.root}/scripts/ip_toucher.py")
+    public_key     = var.PUBLIC_KEY
+    IP_LIST        = join(",", var.IP_LIST)
+    REGION         = var.region
   })
 
 }
-
 
 resource "aws_eip" "ec2_eip" {
   instance = aws_instance.ec2.id

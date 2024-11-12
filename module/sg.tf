@@ -1,5 +1,5 @@
 resource "aws_security_group" "ec2_sg" {
-  vpc_id   = aws_vpc.vpc.id
+  vpc_id = aws_vpc.vpc.id
 
   ingress {
     from_port   = 22
@@ -23,5 +23,5 @@ resource "aws_security_group" "ec2_sg" {
 
 # No Default Allow on default sg
 resource "aws_default_security_group" "sg_default" {
-  vpc_id   = aws_vpc.vpc.id
+  vpc_id = aws_vpc.vpc.id
 }

@@ -25,6 +25,7 @@ module "vpc_ec2_us_east_1" {
   ami_id         = var.ami_ids["us-east-1"]
   SOURCE_SSH_NET = var.SOURCE_SSH_NET
   PUBLIC_KEY     = var.PUBLIC_KEY
+  IP_LIST        = var.IP_LIST
 }
 
 module "vpc_ec2_us_east_2" {
@@ -34,6 +35,7 @@ module "vpc_ec2_us_east_2" {
   ami_id         = var.ami_ids["us-east-2"]
   SOURCE_SSH_NET = var.SOURCE_SSH_NET
   PUBLIC_KEY     = var.PUBLIC_KEY
+  IP_LIST        = var.IP_LIST
 }
 
 module "vpc_ec2_us_west_1" {
@@ -43,6 +45,7 @@ module "vpc_ec2_us_west_1" {
   ami_id         = var.ami_ids["us-west-1"]
   SOURCE_SSH_NET = var.SOURCE_SSH_NET
   PUBLIC_KEY     = var.PUBLIC_KEY
+  IP_LIST        = var.IP_LIST
 }
 
 module "vpc_ec2_us_west_2" {
@@ -52,6 +55,7 @@ module "vpc_ec2_us_west_2" {
   ami_id         = var.ami_ids["us-west-2"]
   SOURCE_SSH_NET = var.SOURCE_SSH_NET
   PUBLIC_KEY     = var.PUBLIC_KEY
+  IP_LIST        = var.IP_LIST
 }
 
 module "vpc_ec2_eu_west_1" {
@@ -61,6 +65,7 @@ module "vpc_ec2_eu_west_1" {
   ami_id         = var.ami_ids["eu-west-1"]
   SOURCE_SSH_NET = var.SOURCE_SSH_NET
   PUBLIC_KEY     = var.PUBLIC_KEY
+  IP_LIST        = var.IP_LIST
 }
 
 output "elastic_ips" {
