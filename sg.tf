@@ -33,6 +33,6 @@ resource "aws_instance_security_group_association" "ec2_sg_association" {
 # No Default Allow on default sg
 resource "aws_default_security_group" "sg_default" {
   for_each = aws_vpc.vpc
-  vpc_id   = aws_vpc.consumer_vpc.id
+  vpc_id   = each.value.id
 }
 

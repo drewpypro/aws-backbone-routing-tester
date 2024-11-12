@@ -21,6 +21,16 @@ resource "aws_subnet" "subnet" {
 
 }
 
+resource "aws_internet_gateway" "igw" {
+  for_each = aws_vpc.vpc
+
+  vpc_id = each.value.id
+  tags = {
+    Name = "${each.key}-igw"
+  }
+
+}
+
 resource "aws_route_table" "rt" {
   for_each = aws_vpc.vpc
 

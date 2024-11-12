@@ -18,7 +18,6 @@ resource "aws_instance" "ec2" {
   }
 
   user_data = templatefile("scripts/consumer_ec2.sh", {
-    # consumer_script = file("${path.module}/scripts/aws_privatelink_protocol_tester.py")
     public_key = var.PUBLIC_KEY
   })
 

@@ -26,12 +26,7 @@ sudo rm /usr/lib/motd.d/20-*  # Remove any other MOTD scripts
 sudo sed -i 's/#PrintLastLog yes/PrintLastLog no/' /etc/ssh/sshd_config
 sudo systemctl restart sshd
 
-# Load python script
-# cat <<'EOF' > /home/ec2-user/aws_privatelink_protocol_tester.py
-# ${consumer_script}
-# EOF
-
-                                
+                             
 ASCII_ART='  ______   __       __   ______  
  /      \ |  \  _  |  \ /      \ 
 |  $$$$$$\| $$ / \ | $$|  $$$$$$\
