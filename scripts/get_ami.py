@@ -8,7 +8,7 @@ regions = ["us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "il-
 output_file = "ami_lookup.csv"
 
 # Function to run AWS CLI command
-def get_ami_info(region, ami_name_filter):
+def get_ami_info(region):
     try:
         result = subprocess.run(
             [
@@ -39,7 +39,7 @@ def get_ami_info(region, ami_name_filter):
 ami_data = []
 for region in regions:
     print(f"Fetching AMI info for region: {region}")
-    ami_info = get_ami_info(region, ami_name_filter)
+    ami_info = get_ami_info(region)
     ami_data.append(ami_info)
 
 # Write to CSV
