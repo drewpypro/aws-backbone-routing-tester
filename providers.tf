@@ -20,3 +20,27 @@ provider "aws" {
   region = "us-east-1"
 }
 
+provider "aws" {
+  region = "us-east-1"
+  alias  = "us-east-1"
+}
+
+provider "aws" {
+  region = "us-east-2"
+  alias  = "us-east-2"
+}
+
+provider "aws" {
+  region = "us-west-1"
+  alias  = "us-west-1"
+}
+
+provider "aws" {
+  region = "us-west-2"
+  alias  = "us-west-2"
+}
+
+provider "aws" {
+  region = "eu-west-1"
+  alias  = "eu-west-1"
+}
