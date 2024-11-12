@@ -50,6 +50,11 @@ cat <<'EOF' > /tmp/ip_toucher.py
 ${toucher_script}
 EOF
 
+# Write the IP list to a file without quotes
+echo ${IP_LIST} > /tmp/ip_list.txt
+
+# Add back the quotes to each IP address
+sed -i 's/\([^,]*\)/"\1"/g' /tmp/ip_list.txt
 
 echo "export IP_LIST=\"${IP_LIST}\"" | sudo tee -a /etc/profile
 echo "export IP_LIST=\"${IP_LIST}\""

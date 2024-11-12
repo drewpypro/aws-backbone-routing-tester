@@ -6,8 +6,10 @@ import json
 
 
 # List of IP addresses to test
-ip_addresses = os.getenv("IP_LIST")
-region = regionvar
+with open('/tmp/ip_list.txt', 'r') as f:
+    ip_addresses = eval(f.read().strip())  # Convert the string back to a list
+
+region = "regionvar"
 
 # Validate required environment variables
 if not ip_addresses:
