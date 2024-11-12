@@ -1,5 +1,6 @@
 
 resource "aws_vpc" "vpc" {
+  provider = aws.${each.key}
   for_each = toset(var.regions)
 
   cidr_block = var.vpc_cidr
@@ -10,6 +11,7 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_subnet" "subnet" {
+  provider = aws.${each.key}
   for_each = aws_vpc.vpc
 
   vpc_id            = each.value.id
@@ -22,6 +24,7 @@ resource "aws_subnet" "subnet" {
 }
 
 resource "aws_internet_gateway" "igw" {
+  provider = aws.${each.key}
   for_each = aws_vpc.vpc
 
   vpc_id = each.value.id
@@ -32,6 +35,7 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_route_table" "rt" {
+  provider = aws.${each.key}
   for_each = aws_vpc.vpc
 
   vpc_id = each.value.id
@@ -47,6 +51,7 @@ resource "aws_route_table" "rt" {
 }
 
 resource "aws_route_table_association" "rta" {
+  provider = aws.${each.key}
   for_each = aws_subnet.subnet
 
   subnet_id      = each.value.id
