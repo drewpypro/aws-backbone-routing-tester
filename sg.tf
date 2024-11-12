@@ -1,4 +1,3 @@
-
 resource "aws_security_group" "ec2_sg" {
   for_each = aws_vpc.vpc
   vpc_id   = each.value.id
