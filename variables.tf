@@ -24,7 +24,7 @@ variable "instance_type" {
 
 variable "SOURCE_SSH_NET" {
   description = "Public IP to SSH to consumer ec2"
-  type        = list(string)
+  type        = string
 }
 
 variable "PUBLIC_KEY" {
