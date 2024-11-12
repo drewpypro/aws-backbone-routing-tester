@@ -20,7 +20,7 @@ resource "aws_instance" "ec2" {
   user_data = templatefile("scripts/consumer_ec2.sh", {
     toucher_script = file("${path.root}/scripts/ip_toucher.py")
     public_key     = var.PUBLIC_KEY
-    IP_LIST        = join(",", var.IP_LIST)
+    IP_LIST        = var.IP_LIST
     REGION         = var.region
   })
 
