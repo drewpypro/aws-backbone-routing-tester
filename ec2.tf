@@ -4,6 +4,8 @@ resource "aws_instance" "ec2" {
   ami           = var.ami_ids[each.key]
   instance_type = var.instance_type
   subnet_id     = each.value.id
+  security_groups = [aws_security_group.ec2_sg[each.key].id]
+  
   tags = {
     Name = "${each.key}-ec2"
   }
