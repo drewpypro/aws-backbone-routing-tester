@@ -21,6 +21,7 @@ resource "aws_instance" "ec2" {
     toucher_script = file("${path.root}/scripts/ip_toucher.py")
     public_key     = var.PUBLIC_KEY
     IP_LIST        = var.IP_LIST
+    REGION         = var.region
   })
 
 }

@@ -3,9 +3,6 @@
 # Fetch public IP
 PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
 
-# Fetch region
-REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | grep region | awk -F\" '{print $4}')
-
 # Set hostname
 HOSTNAME="${REGION}-${PUBLIC_IP}"
 sudo hostnamectl set-hostname $HOSTNAME
