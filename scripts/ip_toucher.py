@@ -7,7 +7,7 @@ import json
 
 # List of IP addresses to test
 ip_addresses = os.getenv("IP_LIST")
-region = regionvar
+region = "regionvar"
 
 # Validate required environment variables
 if not ip_addresses:
