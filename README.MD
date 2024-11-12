@@ -25,7 +25,6 @@ This repository contains Terraform configuration files and various scripts for s
 
 # Goals
 - AWS routes public subnets through public vifs creating connectivity paths from any AWS account to internal corporate networks leveraging public IP space. 
-- Test ipv6 routing. 
 
 # Test Cases
 
