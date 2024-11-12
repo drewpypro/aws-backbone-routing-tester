@@ -3,9 +3,6 @@
 # Fetch public IP
 PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
 
-# Fetch region
-REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | grep region | awk -F\" '{print $4}')
-
 sudo hostnamectl set-hostname $PUBLIC_IP
 sudo hostnamectl 
 
@@ -53,7 +50,13 @@ cat <<'EOF' > /tmp/ip_toucher.py
 ${toucher_script}
 EOF
 
-sed -i "s|IP_LIST|${IP_LIST}|g" /tmp/ip_toucher.py
+# Format IP_LIST as a Python list
+formatted_ip_list=$(echo "${IP_LIST}" | sed 's/,/","/g')
+formatted_ip_list="\"${formatted_ip_list}\""
+
+# Replace placeholder in the Python script
+sed -i "s|IP_LIST|${formatted_ip_list}|" /tmp/ip_toucher.py
+
 chmod +x /tmp/ip_toucher.py
 sleep 60
 python3 /tmp/ip_toucher.py > /tmp/ip_touchlog.txt 2>&1
