@@ -7,19 +7,13 @@ import json
 
 # List of IP addresses to test
 with open('/tmp/ip_list.txt', 'r') as f:
-    ip_addresses = eval(f.read().strip())  # Convert the string back to a list
+    ip_addresses = eval(f.read().strip())
 
 region = "regionvar"
 
 # Validate required environment variables
 if not ip_addresses:
     raise ValueError("Environment variable IP_LIST is not set or is empty.")
-
-# Convert IP_LIST from string to Python list
-try:
-    ip_addresses = json.loads(ip_list_env)
-except json.JSONDecodeError as e:
-    raise ValueError(f"Failed to parse IP_LIST as a valid JSON array: {e}")
 
 # Output CSV file
 output_file = f"${region}-network_traffic_report.csv"
