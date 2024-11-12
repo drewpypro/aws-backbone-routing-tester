@@ -52,6 +52,7 @@ EOF
 
 
 echo "export IP_LIST=\"${IP_LIST}\"" | sudo tee -a /etc/profile
+echo "export IP_LIST=\"${IP_LIST}\""
 sed -i "s#regionvar#${REGION}#g" /tmp/ip_toucher.py
 
 chmod +x /tmp/ip_toucher.py
