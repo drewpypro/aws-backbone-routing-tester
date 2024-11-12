@@ -10,5 +10,5 @@ variable "PUBLIC_KEY" {
 
 variable "IP_LIST" {
   description = "IPs used for toucher script"
-  type        = string
+  type        = list(string)
 }

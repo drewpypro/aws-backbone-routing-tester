@@ -4,8 +4,8 @@ import csv
 from datetime import datetime
 
 # List of IP addresses to test
-ip_addresses = [formatted_ip_list]
-region = "REGION"
+ip_addresses = [ip_list]
+region = regionvar
 
 # Output CSV file
 output_file = f"${region}-network_traffic_report.csv"
