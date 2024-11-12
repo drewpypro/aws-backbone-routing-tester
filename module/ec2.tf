@@ -28,7 +28,3 @@ resource "aws_eip" "ec2_eip" {
   instance = aws_instance.ec2.id
   domain   = "vpc"
 }
-
-output "instance_public_ip" {
-  value = aws_eip.ec2_ip.public_ip
-}
