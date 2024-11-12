@@ -27,4 +27,3 @@ resource "aws_default_security_group" "sg_default" {
   for_each = aws_vpc.vpc
   vpc_id   = each.value.id
 }
-
