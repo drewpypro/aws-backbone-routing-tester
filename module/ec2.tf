@@ -31,5 +31,5 @@ resource "aws_eip" "ec2_eip" {
 
 output "elastic_ip" {
   description = "Elastic IP of the EC2 instance"
-  value       = aws_eip.eip.public_ip
+  value       = aws_eip.ec2_eip.public_ip
 }
