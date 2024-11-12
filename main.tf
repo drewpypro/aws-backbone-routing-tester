@@ -9,7 +9,7 @@ variable "ami_ids" {
 }
 
 module "vpc_ec2_us_east_1" {
-  source         = "/module"
+  source         = "./module"
   providers      = { aws = aws.us-east-1 }
   region         = "us-east-1"
   ami_id         = var.ami_ids["us-east-1"]
@@ -18,7 +18,7 @@ module "vpc_ec2_us_east_1" {
 }
 
 module "vpc_ec2_us_east_2" {
-  source         = "/module"
+  source         = "./module"
   providers      = { aws = aws.us-east-2 }
   region         = "us-east-2"
   ami_id         = var.ami_ids["us-east-2"]
@@ -27,7 +27,7 @@ module "vpc_ec2_us_east_2" {
 }
 
 module "vpc_ec2_us_west_1" {
-  source         = "/module"
+  source         = "./module"
   providers      = { aws = aws.us-west-1 }
   region         = "us-west-1"
   ami_id         = var.ami_ids["us-west-1"]
@@ -36,7 +36,7 @@ module "vpc_ec2_us_west_1" {
 }
 
 module "vpc_ec2_us_west_2" {
-  source         = "/module"
+  source         = "./module"
   providers      = { aws = aws.us-west-2 }
   region         = "us-west-2"
   ami_id         = var.ami_ids["us-west-2"]
@@ -45,7 +45,7 @@ module "vpc_ec2_us_west_2" {
 }
 
 module "vpc_ec2_eu_west_1" {
-  source         = "/module"
+  source         = "./module"
   providers      = { aws = aws.eu-west-1 }
   region         = "eu-west-1"
   ami_id         = var.ami_ids["eu-west-1"]
