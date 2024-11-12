@@ -1,5 +1,5 @@
 variable "regions" {
-  default = ["us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "me-central-1"]
+  default = ["us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1"]
 }
 
 variable "vpc_cidr" {
@@ -48,6 +48,5 @@ variable "ami_ids" {
     "us-west-1" = "ami-0d4c90c7f333a7d17"
     "us-west-2" = "ami-03b2bc8987ca3dce7"
     "eu-west-1" = "ami-0eae74a2795d511c8"
-    # "me-central-1"   = "ami-05448b0a80dd813cf"
   }
 }
