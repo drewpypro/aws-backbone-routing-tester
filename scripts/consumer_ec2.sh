@@ -50,8 +50,6 @@ cat <<'EOF' > /tmp/ip_toucher.py
 ${toucher_script}
 EOF
 
-IP_LIST=$(echo ${IP_LIST} | sed 's/,/","/g')
-IP_LIST="[\"${formatted_ip_list}\"]"
 
 sed -i "s#ip_list#${IP_LIST}#g" /tmp/ip_toucher.py
 sed -i "s#regionvar#${REGION}#g" /tmp/ip_toucher.py
