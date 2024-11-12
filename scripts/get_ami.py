@@ -4,9 +4,6 @@ import csv
 # List of regions to query
 regions = ["us-east-1", "us-east-2", "us-west-1", "us-west-2", "eu-west-1", "il-central-1"]
 
-# AMI filter
-ami_name_filter = "al2023-ami"
-
 # Output CSV file
 output_file = "ami_lookup.csv"
 

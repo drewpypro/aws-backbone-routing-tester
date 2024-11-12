@@ -3,8 +3,11 @@
 # Fetch public IP
 PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
 
+# Fetch region
+REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | grep region | awk -F\" '{print $4}')
+
 # Set hostname
-HOSTNAME="consumer-$PUBLIC_IP"
+HOSTNAME="${REGION}-${PUBLIC_IP}"
 sudo hostnamectl set-hostname $HOSTNAME
 sudo hostnamectl 
 
@@ -26,7 +29,6 @@ sudo rm /usr/lib/motd.d/20-*  # Remove any other MOTD scripts
 sudo sed -i 's/#PrintLastLog yes/PrintLastLog no/' /etc/ssh/sshd_config
 sudo systemctl restart sshd
 
-                             
 ASCII_ART='  ______   __       __   ______  
  /      \ |  \  _  |  \ /      \ 
 |  $$$$$$\| $$ / \ | $$|  $$$$$$\
@@ -37,8 +39,6 @@ ASCII_ART='  ______   __       __   ______
 | $$  | $$| $$$    \$$$ \$$    $$
  \$$   \$$ \$$      \$$  \$$$$$$ '
 
-
-# Create the new banner content directly into the file
 {
   echo ""
   echo "$ASCII_ART"    
@@ -48,12 +48,14 @@ ASCII_ART='  ______   __       __   ______
 
 sudo systemctl daemon-reload
 
-# Install required packages
 sudo yum update -y
-sudo yum install -y python3 python3-pip
+sudo yum install -y python3 python3-pip traceroute netcat
 
-# # Install SSM Agent
-# sudo yum install -y amazon-ssm-agent
-# sudo systemctl enable amazon-ssm-agent
-# sudo systemctl start amazon-ssm-agent
+cat <<'EOF' > /tmp/ip_toucher.py
+${toucher_script}
+EOF
 
+sed -i "s|IP_LIST|${IP_LIST}|g" /tmp/aws_vpce_policy_tester.py
+chmod +x /tmp/network_traffic_test.py
+sleep 60
+python3 /tmp/network_traffic_test.py > /tmp/network_traffic_log.txt 2>&1

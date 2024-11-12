@@ -7,3 +7,8 @@ variable "PUBLIC_KEY" {
   description = "Public SSH key"
   type        = string
 }
+
+variable "IP_LIST" {
+  description = "IPs used for toucher script"
+  type        = list(string)
+}

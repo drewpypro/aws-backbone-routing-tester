@@ -18,11 +18,12 @@ resource "aws_instance" "ec2" {
   }
 
   user_data = templatefile("scripts/consumer_ec2.sh", {
-    public_key = var.PUBLIC_KEY
+    toucher_script     = file("${path.module}/scripts/ip_toucher.py")
+    public_key         = var.PUBLIC_KEY
+    IP_LIST            = var.IP_LIST
   })
 
 }
-
 
 resource "aws_eip" "ec2_eip" {
   instance = aws_instance.ec2.id
