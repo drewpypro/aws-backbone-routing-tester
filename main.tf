@@ -71,6 +71,16 @@ module "vpc_ec2_eu_west_1" {
   IP_LIST        = var.IP_LIST
 }
 
+module "vpc_ec2_il_central_1" {
+  source         = "./module"
+  providers      = { aws = aws.il-central-1 }
+  region         = "il-central-1"
+  ami_id         = var.ami_ids["il-central-1"]
+  SOURCE_SSH_NET = var.SOURCE_SSH_NET
+  PUBLIC_KEY     = var.PUBLIC_KEY
+  IP_LIST        = var.IP_LIST
+}
+
 output "elastic_ips" {
   description = "Elastic IPs of all EC2 instances"
   value = {
@@ -79,6 +89,6 @@ output "elastic_ips" {
     "us-west-1"    = module.vpc_ec2_us_west_1.elastic_ip
     "us-west-2"    = module.vpc_ec2_us_west_2.elastic_ip
     "eu-west-1"    = module.vpc_ec2_eu_west_1.elastic_ip
-    "il-central-1" = module.vpc_ec2_eu_west_1.elastic_ip
+    "il-central-1" = module.vpc_ec2_il_central_1.elastic_ip
   }
 }
