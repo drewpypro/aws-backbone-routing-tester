@@ -79,7 +79,6 @@ module "vpc_ec2_il_central_1" {
   SOURCE_SSH_NET = var.SOURCE_SSH_NET
   PUBLIC_KEY     = var.PUBLIC_KEY
   IP_LIST        = var.IP_LIST
-  instance_type  = "t2.micro"
 }
 
 output "elastic_ips" {
