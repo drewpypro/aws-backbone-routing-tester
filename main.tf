@@ -89,6 +89,6 @@ output "elastic_ips" {
     "us-west-1"    = module.vpc_ec2_us_west_1.elastic_ip
     "us-west-2"    = module.vpc_ec2_us_west_2.elastic_ip
     "eu-west-1"    = module.vpc_ec2_eu_west_1.elastic_ip
-    "il-central-1" = module.vpc_ec2_eu_west_1.elastic_ip
+    "il-central-1" = module.vpc_ec2_il_central_1.elastic_ip
   }
 }
