@@ -28,14 +28,14 @@ This repository contains Terraform configuration files and various scripts for s
 
 # Test Cases
 
-| Test Case Description                             | Allowed/Denied                | TestDetail/Result                                |
-|---------------------------------------------------|-------------------------------|--------------------------------------------------|
-| us-east-1 to public vif destination               | :no_entry_sign:               | Traceroute, icmp and tcp connectivity |
-| us-east-2 to public vif destination               | :no_entry_sign:               | Traceroute, icmp and tcp connectivity  |
-| us-west-1 to public vif destination               | :no_entry_sign:               | Traceroute, icmp and tcp connectivity |
-| us-west-2 to public vif destination               | :no_entry_sign:               | Traceroute, icmp and tcp connectivity |
-| tel-aviv to public vif destination                | :no_entry_sign:               | Traceroute, icmp and tcp connectivity |
-| eu to public vif destination                      | :no_entry_sign:               | Traceroute, icmp and tcp connectivity |
+| Test Case Description                             | Routing Allowed               | TestDetail/Result                     |
+|---------------------------------------------------|-------------------------------|---------------------------------------|
+| us-east-1 to public vif destination               | :white_check_mark:            | Traceroute, icmp and tcp connectivity |
+| us-east-2 to public vif destination               | :white_check_mark:            | Traceroute, icmp and tcp connectivity |
+| us-west-1 to public vif destination               | :white_check_mark:            | Traceroute, icmp and tcp connectivity |
+| us-west-2 to public vif destination               | :white_check_mark:            | Traceroute, icmp and tcp connectivity |
+| tel-aviv to public vif destination                | :white_check_mark:            | Traceroute, icmp and tcp connectivity |
+| eu to public vif destination                      | :white_check_mark:            | Traceroute, icmp and tcp connectivity |
 
 
 ## Project Structure
